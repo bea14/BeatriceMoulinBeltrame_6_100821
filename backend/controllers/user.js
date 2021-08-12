@@ -3,10 +3,22 @@ const bcrypt = require('bcrypt');
 //création des token d'identification pour la session
 const jwt = require('jsonwebtoken');
 //importation du model User
-const User = require('../models/user');//Package crypto-js
-//const cryptoJS = require("crypto-js");
+const User = require('../models/user');
+//Package crypto-js
+const cryptoJS = require('crypto-js');
 
 require('dotenv').config();
+
+//Crypto-js
+// ISecret key pour l'email
+var key = cryptoJS.enc.Hex.parse(process.env.EMAIL_SECRET_TOKEN);
+// Initialisation vecteur
+var iv  = cryptoJS.enc.Hex.parse(process.env.iv);
+//Encrypt email
+const encryptEmail = (string) => {
+  const enc = cryptoJS.AES.encrypt(string , key, { iv: iv }).toString();
+  return enc;
+};
 
 //inscription user
 exports.signup = (req, res, next) => {
@@ -15,11 +27,12 @@ exports.signup = (req, res, next) => {
     .then(hash => {
       //creation user et enregistrement dans la base de données
       const user = new User({
-        email: req.body.email,
-        // email: encryptEmail(req.body.email),
+        //email: req.body.email,
+        email: encryptEmail(req.body.email),
         password: hash
       });
-      user.save()
+      user
+      .save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
         .catch(error => res.status(400).json({ error }));
     })
@@ -30,8 +43,8 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
   //cherche l'adresse mail dans la bdd
   User.findOne({ 
-    email: req.body.email,
-    //email: encryptEmail(req.body.email),
+    //email: req.body.email,
+    email: encryptEmail(req.body.email),
   })
     .then(user => {
       //si le user n'est pas dans la bdd
