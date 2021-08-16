@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //création du schéma strict Sauce
 const sauceSchema = mongoose.Schema({
@@ -11,9 +11,9 @@ const sauceSchema = mongoose.Schema({
   heat: { type: Number, required: true },
   likes: { type: Number, required: false, default: 0 },
   dislikes: { type: Number, required: false, default: 0 },
-  usersLiked: { type: [String], required: false, defaultValue:[] },
-  usersDisliked: { type: [String], required: false, defaultValue:[] },
+  usersLiked: { type: [String], required: false, defaultValue: [] },
+  usersDisliked: { type: [String], required: false, defaultValue: [] },
 });
 
 //export du schéma en tant que modèle Mongoose, le rendant disponible pour Express
-module.exports = mongoose.model('Sauce', sauceSchema);
+module.exports = mongoose.model("Sauce", sauceSchema);
