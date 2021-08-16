@@ -1,0 +1,16 @@
+Versions des dependances et logiciels utilisés au 16/08/2021 :
+node 14.17.1
+npm 6.14.13
+dependences: 
+    "bcrypt": "^5.0.1",//hashage mdp
+    "body-parser": "^1.19.0",//pas obligé si version express>4.16
+    "crypto-js": "^4.1.1", //crypte des donnees
+    "dotenv": "^10.0.0", //charge les variables d'environment depuis un fichier .env dans process.env
+    "express": "^4.17.1", // framework
+    "express-mongo-sanitize": "^2.1.0", //middleware express pour eviter les injections dans les operateurs mongoDB (Nettoie les champs utilisateurs des tentatives d'injection de code commençant par "$" ou ".")
+    "helmet": "^4.6.0", //securisation appli express via les headers
+    "jsonwebtoken": "^8.5.1",//jeton pour la session
+    "mongoose": "^5.13.5",
+    "mongoose-unique-validator": "^2.0.3",//validation des champs unique d'un schema mongoose
+    "multer": "^1.4.3",//telechargement de fichiers
+    "nodemon": "^2.0.12" // redemarrage automatique du serveur en cas de modif
