@@ -1,0 +1,12 @@
+Vérifier que nvm est installé sinon le faire (permet de gérer les différentes versions de node)
+Vérifier la version de node.js installéé : node -v
+Si besoin installer la version 12.14 : nvm install 12.14
+Dire que l'on veut uiliser cette version : nvm use 12.14
+Vérifier en faisant node -v
+Installer angular CLI 7.0.2 : npm @angular/cli@7.0.2
+Vérifier la version de node-sass/ l'installer : npm install node-sass@4.12
+Toutes les bonnes versions sont installées !
+Cloner le repo si pas déjà fait.
+Lancer npm install
+Lancer npm start
+L'appli sera accessible sur http://localhost:8080
